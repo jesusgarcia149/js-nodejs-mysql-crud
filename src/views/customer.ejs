@@ -1,0 +1,61 @@
+<%- include('./partials/header') %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<form action="/create" method="post">
+						<h1>Add new Customer!</h1>
+						<div class="form-group">
+							<input type="text" name="name" placeholder="Name" class="form-control ">
+						</div>
+						<div class="form-group">
+							<input type="text" name="Address" placeholder="Address" class="form-control ">
+						</div>
+						<div class="form-group">
+							<input type="text" name="Phone" placeholder="Phone" class="form-control ">
+						</div>
+						<button type="submit" class="btn btn-primary">Save Customer</button>
+					</form>
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<h1>List of Customers!</h1>
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Address</th>
+								<th>Phone</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% data.forEach(function(data) { %>
+								<tr>
+									<td><%= data.id %></td>
+									<td><%= data.name %></td>
+									<td><%= data.address %></td>
+									<td><%= data.phone %></td>
+									<td>
+										<a href="/update/<%= data.id %>" class="btn btn-info">Update</a>
+										<a href="/delete/<%= data.id %>" class="btn btn-danger">Delete</a>
+									</td>
+								</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('./partials/footer') %>								
